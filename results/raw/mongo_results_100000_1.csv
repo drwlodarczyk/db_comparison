@@ -1,0 +1,6 @@
+operation,avg_time_ms,stddev_ms,num_records,query
+Select all users,0.17485618591308594,0.031548192877874096,5,<function main.<locals>.<lambda> at 0x107494220>
+Select all products in category,0.15420913696289062,0.014838947120369154,5,<function main.<locals>.<lambda> at 0x1074944a0>
+Select all orders for user,0.1369953155517578,0.017807011075170513,5,<function main.<locals>.<lambda> at 0x107494540>
+Top 10 best-selling products,18.14117431640625,3.031584433204696,5,<function main.<locals>.<lambda> at 0x1074945e0>
+Average rating per product,16.538190841674805,0.4932551513593402,5,<function main.<locals>.<lambda> at 0x107494680>
