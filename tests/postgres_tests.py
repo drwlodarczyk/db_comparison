@@ -37,11 +37,15 @@ def main():
     conn = psycopg2.connect(**POSTGRES_CONFIG)
     cur = conn.cursor()
     ensure_data(cur, record_count)
+    # Find a user_id that actually has orders
+    cur.execute("SELECT user_id FROM orders LIMIT 1")
+    user_with_order = cur.fetchone()
+    user_id_for_orders = user_with_order[0] if user_with_order else 1
     results = []
     queries = [
         ("Select all users", f"SELECT * FROM users WHERE id BETWEEN {id_start} AND {id_end}", None),
         ("Select all products in category", f"SELECT * FROM products WHERE category = %s AND id BETWEEN {id_start} AND {id_end}", ('Shirts',)),
-        ("Select all orders for user", f"SELECT * FROM orders WHERE user_id = %s AND id BETWEEN {id_start} AND {id_end}", (1,)),
+        ("Select all orders for user", f"SELECT * FROM orders WHERE user_id = %s AND id BETWEEN {id_start} AND {id_end}", (user_id_for_orders,)),
         ("Top 10 best-selling products", "SELECT product_id, COUNT(*) as cnt FROM order_reviews GROUP BY product_id ORDER BY cnt DESC LIMIT 10", None),
         ("Average rating per product", "SELECT product_id, AVG(rating) FROM order_reviews GROUP BY product_id LIMIT 10", None),
     ]

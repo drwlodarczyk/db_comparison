@@ -32,17 +32,29 @@ def main():
         'price': round(random.uniform(10, 200), 2)
     } for _ in range(product_n)]
     db.products.insert_many(products)
+<<<<<<< Updated upstream
     user_ids = list(db.users.find({}, {'_id': 1}))
     product_ids = list(db.products.find({}, {'_id': 1}))
+=======
+    db.products.create_index([('category', 1)])
+>>>>>>> Stashed changes
     orders = [{
-        'user_id': random.choice(user_ids)['_id'],
+        'user_id': i+1,
         'order_date': datetime.utcnow()
-    } for _ in range(order_n)]
+    } for i in range(min(order_n, user_n))]
+    orders += [{
+        'user_id': random.randint(1, user_n),
+        'order_date': datetime.utcnow()
+    } for _ in range(order_n - min(order_n, user_n))]
     db.orders.insert_many(orders)
+<<<<<<< Updated upstream
     order_ids = list(db.orders.find({}, {'_id': 1}))
+=======
+    db.orders.create_index([('user_id', 1)])
+>>>>>>> Stashed changes
     reviews = [{
-        'order_id': random.choice(order_ids)['_id'],
-        'product_id': random.choice(product_ids)['_id'],
+        'order_id': random.randint(1, order_n),
+        'product_id': random.randint(1, product_n),
         'rating': random.randint(1, 5),
         'review': random_string(20)
     } for _ in range(review_n)]

@@ -1,6 +1,14 @@
 operation,avg_time_ms,stddev_ms,num_records,query
+<<<<<<< Updated upstream
 Select all users,0.33240318298339844,0.10051448495136299,5,SELECT * FROM users WHERE id BETWEEN 1 AND 300
 Select all products in category,0.4300117492675781,0.4641137349717952,5,SELECT * FROM products WHERE category = %s AND id BETWEEN 1 AND 300
 Select all orders for user,0.2372264862060547,0.107433565213851,5,SELECT * FROM orders WHERE user_id = %s AND id BETWEEN 1 AND 300
 Top 10 best-selling products,4.980564117431641,1.8011460440137517,5,"SELECT product_id, COUNT(*) as cnt FROM order_reviews GROUP BY product_id ORDER BY cnt DESC LIMIT 10"
 Average rating per product,3.0806541442871094,0.47528208240910885,5,"SELECT product_id, AVG(rating) FROM order_reviews GROUP BY product_id LIMIT 10"
+=======
+Select all users,0.44269561767578125,0.10669909354467212,5,SELECT * FROM users WHERE id BETWEEN 1 AND 300
+Select all products in category,0.42328834533691406,0.47541587130972174,5,SELECT * FROM products WHERE category = %s AND id BETWEEN 1 AND 300
+Select all orders for user,0.2216815948486328,0.035163062921688686,5,SELECT * FROM orders WHERE user_id = %s AND id BETWEEN 1 AND 300
+Top 10 best-selling products,5.513429641723633,2.6562097855377713,5,"SELECT product_id, COUNT(*) as cnt FROM order_reviews GROUP BY product_id ORDER BY cnt DESC LIMIT 10"
+Average rating per product,2.9890060424804688,0.47042019964893594,5,"SELECT product_id, AVG(rating) FROM order_reviews GROUP BY product_id LIMIT 10"
+>>>>>>> Stashed changes

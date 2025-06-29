@@ -1,6 +1,14 @@
 operation,avg_time_ms,stddev_ms,num_records,query
+<<<<<<< Updated upstream
 Select all users,0.17485618591308594,0.031548192877874096,5,<function main.<locals>.<lambda> at 0x107494220>
 Select all products in category,0.15420913696289062,0.014838947120369154,5,<function main.<locals>.<lambda> at 0x1074944a0>
 Select all orders for user,0.1369953155517578,0.017807011075170513,5,<function main.<locals>.<lambda> at 0x107494540>
 Top 10 best-selling products,18.14117431640625,3.031584433204696,5,<function main.<locals>.<lambda> at 0x1074945e0>
 Average rating per product,16.538190841674805,0.4932551513593402,5,<function main.<locals>.<lambda> at 0x107494680>
+=======
+Select all users,0.1636028289794922,0.023803919170764853,5,<function main.<locals>.<lambda> at 0x107398220>
+Select all products in category,0.23813247680664062,0.24422602398558757,5,<function main.<locals>.<lambda> at 0x1073984a0>
+Select all orders for user,0.12941360473632812,0.01302756292223202,5,<function main.<locals>.<lambda> at 0x107398540>
+Top 10 best-selling products,17.072153091430664,2.787111396968451,5,<function main.<locals>.<lambda> at 0x1073985e0>
+Average rating per product,15.59910774230957,0.2600733967282269,5,<function main.<locals>.<lambda> at 0x107398680>
+>>>>>>> Stashed changes

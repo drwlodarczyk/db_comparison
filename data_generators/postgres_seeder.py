@@ -57,38 +57,26 @@ def truncate_tables(cur):
     ''')
 
 def seed_users(cur, n):
-    for i in range(n):
-        cur.execute(
-            "INSERT INTO users (name, email) VALUES (%s, %s)",
-            (random_string(8), f"{random_string(5)}_{i}@mail.com")
-        )
+    users = [(random_string(8), f"{random_string(5)}_{i}@mail.com") for i in range(n)]
+    cur.executemany("INSERT INTO users (name, email) VALUES (%s, %s)", users)
 
 def seed_products(cur, n):
     categories = ['Shirts', 'Pants', 'Shoes', 'Accessories']
-    for _ in range(n):
-        cur.execute(
-            "INSERT INTO products (name, category, price) VALUES (%s, %s, %s)",
-            (random_string(10), random.choice(categories), round(random.uniform(10, 200), 2))
-        )
+    products = [(random_string(10), random.choice(categories), round(random.uniform(10, 200), 2)) for _ in range(n)]
+    cur.executemany("INSERT INTO products (name, category, price) VALUES (%s, %s, %s)", products)
 
 def seed_orders(cur, n, user_count):
-    for _ in range(n):
-        cur.execute(
-            "INSERT INTO orders (user_id, order_date) VALUES (%s, NOW())",
-            (random.randint(1, user_count),)
-        )
+    orders = [(random.randint(1, user_count),) for _ in range(n)]
+    cur.executemany("INSERT INTO orders (user_id, order_date) VALUES (%s, NOW())", orders)
 
 def seed_order_reviews(cur, n, order_count, product_count):
-    for _ in range(n):
-        cur.execute(
-            "INSERT INTO order_reviews (order_id, product_id, rating, review) VALUES (%s, %s, %s, %s)",
-            (
-                random.randint(1, order_count),
-                random.randint(1, product_count),
-                random.randint(1, 5),
-                random_string(20)
-            )
-        )
+    reviews = [(
+        random.randint(1, order_count),
+        random.randint(1, product_count),
+        random.randint(1, 5),
+        random_string(20)
+    ) for _ in range(n)]
+    cur.executemany("INSERT INTO order_reviews (order_id, product_id, rating, review) VALUES (%s, %s, %s, %s)", reviews)
 
 def main():
     user_n = int(sys.argv[1]) if len(sys.argv) > 1 else 10000

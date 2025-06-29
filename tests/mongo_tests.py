@@ -19,10 +19,12 @@ def get_id_range(collection, count):
     if total == 0:
         return None, None
     if count >= total:
-        ids = list(collection.find({}, {'_id': 1}).sort('_id', 1))
-        return ids[0]['_id'], ids[-1]['_id']
-    ids = list(collection.find({}, {'_id': 1}).sort('_id', 1).limit(count))
-    return ids[0]['_id'], ids[-1]['_id']
+        first = collection.find_one({}, sort=[('_id', 1)])
+        last = collection.find_one({}, sort=[('_id', -1)])
+        return first['_id'], last['_id']
+    first = collection.find_one({}, sort=[('_id', 1)])
+    last = collection.find({}, sort=[('_id', 1)]).skip(count - 1).limit(1).next()
+    return first['_id'], last['_id']
 
 def main():
     record_count = int(sys.argv[1]) if len(sys.argv) > 1 else 10000
