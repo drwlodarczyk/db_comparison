@@ -26,12 +26,14 @@ def main():
         'email': f"{random_string(5)}_{i}@mail.com"
     } for i in range(user_n)]
     db.users.insert_many(users)
+    db.users.create_index('_id')
     products = [{
         'name': random_string(10),
         'category': random.choice(['Shirts', 'Pants', 'Shoes', 'Accessories']),
         'price': round(random.uniform(10, 200), 2)
     } for _ in range(product_n)]
     db.products.insert_many(products)
+    db.products.create_index([('category', 1)])
     user_ids = list(db.users.find({}, {'_id': 1}))
     product_ids = list(db.products.find({}, {'_id': 1}))
     orders = [{
@@ -39,6 +41,7 @@ def main():
         'order_date': datetime.utcnow()
     } for _ in range(order_n)]
     db.orders.insert_many(orders)
+    db.orders.create_index([('user_id', 1)])
     order_ids = list(db.orders.find({}, {'_id': 1}))
     reviews = [{
         'order_id': random.choice(order_ids)['_id'],
@@ -47,6 +50,8 @@ def main():
         'review': random_string(20)
     } for _ in range(review_n)]
     db.order_reviews.insert_many(reviews)
+    db.order_reviews.create_index([('product_id', 1)])
+    db.order_reviews.create_index([('order_id', 1)])
     print('Done.')
 
 if __name__ == '__main__':

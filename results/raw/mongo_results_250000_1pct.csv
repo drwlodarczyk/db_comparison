@@ -1,6 +1,6 @@
 operation,avg_time_ms,stddev_ms,num_records,query
-Select all users,2.060222625732422,0.19961127627103642,5,<function main.<locals>.<lambda> at 0x10a3c0220>
-Select all products in category,1.299285888671875,0.04230824850124468,5,<function main.<locals>.<lambda> at 0x10a3c04a0>
-Select all orders for user,0.9062290191650391,0.019492814916657653,5,<function main.<locals>.<lambda> at 0x10a3c0540>
-Top 10 best-selling products,43.27292442321777,3.40929648309347,5,<function main.<locals>.<lambda> at 0x10a3c05e0>
-Average rating per product,45.043230056762695,4.13469410146855,5,<function main.<locals>.<lambda> at 0x10a3c0680>
+Select all users,2.205371856689453,0.26787284945156264,5,<function main.<locals>.<lambda> at 0x110bb4220>
+Select all products in category,4.921817779541016,0.08954968188327242,5,<function main.<locals>.<lambda> at 0x110bb44a0>
+Select all orders for user,0.1316070556640625,0.02614789938136138,5,<function main.<locals>.<lambda> at 0x110bb4540>
+Top 10 best-selling products,40.14477729797363,0.40236356747538576,5,<function main.<locals>.<lambda> at 0x110bb45e0>
+Average rating per product,41.01223945617676,1.2646870143782527,5,<function main.<locals>.<lambda> at 0x110bb4680>
